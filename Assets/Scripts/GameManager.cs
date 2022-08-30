@@ -6,12 +6,13 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private float gravity = 5;
     public static float gravityAcceleration;
+ 
     // Start is called before the first frame update
     void Start()
     {
         //60fps
         Application.targetFrameRate = 60;
-        ToggleCursorMode(true);
+        ToggleCursorMode(false);
     }
 
     // Update is called once per frame
