@@ -4,6 +4,7 @@
  */
 
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Weapon : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class Weapon : MonoBehaviour
     
     Camera mainCam;
     public HeatLevel heatLevel; // Reference to the script
+    public int ammo;
+    public Text ammoDisplay;
+    private bool isFiring;
     void Awake()
     {
         // Grab player's camera proxy and make it a variable
@@ -20,9 +24,17 @@ public class Weapon : MonoBehaviour
     }
     void Update()
     {
+        ammoDisplay.text = ammo.ToString();
+        
         // Check if the left mouse button is pressed, then make the raycast
-        if (Input.GetMouseButtonDown(0))
-            HandleRaycast();
+        if (Input.GetMouseButtonDown(0) && !isFiring && ammo > 0)
+            {
+                isFiring = true;
+                HandleRaycast();
+                ammo--;
+                isFiring = false;
+            }
+
     }
 
     private void HandleRaycast()

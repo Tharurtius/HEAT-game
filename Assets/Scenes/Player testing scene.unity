@@ -1496,6 +1496,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponRange: 50
   heatLevel: {fileID: 1716114095}
+  ammo: 100
+  ammoDisplay: {fileID: 815802170}
 --- !u!1001 &1490909922
 PrefabInstance:
   m_ObjectHideFlags: 0
