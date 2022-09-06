@@ -31,6 +31,9 @@ public class HeatLevel : MonoBehaviour
         {
             heatLevelImage[4].SetActive(true);
         }
+
+        // Diagnostic check
+        Debug.Log("Heat level up!");
     }
 
     public void HeatLevelDown()
