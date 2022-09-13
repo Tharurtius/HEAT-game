@@ -16,11 +16,14 @@ public class Weapon : MonoBehaviour
     public int ammo;
     public Text ammoDisplay;
     private bool isFiring;
+    private GameObject camera;
     void Awake()
     {
         // Grab player's camera proxy and make it a variable
         if (mainCam == null)
             mainCam = Camera.main;
+        //get camera gameobject reference
+        camera = mainCam.gameObject;
     }
     void Update()
     {
@@ -40,11 +43,11 @@ public class Weapon : MonoBehaviour
     private void HandleRaycast()
     {
         RaycastHit hit;
-        Ray shootingRay = new Ray(mainCam.transform.position, transform.forward);
+        Ray shootingRay = new Ray(mainCam.transform.position, camera.transform.forward);
 
         if (Physics.Raycast(shootingRay, out hit, weaponRange))
         {
-            // Debug.DrawRay(mainCam.transform.position, transform.forward * weaponRange, Color.green);
+            //Debug.DrawRay(mainCam.transform.position, camera.transform.forward * weaponRange, Color.green);
             if (hit.transform.tag.Equals("Enemy"))
             {
                 Destroy(hit.transform.gameObject); // Destroy the instance

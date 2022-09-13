@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     {
         //60fps
         Application.targetFrameRate = 60;
-        ToggleCursorMode(false);
+        ToggleCursorMode(true);
     }
 
     // Update is called once per frame
