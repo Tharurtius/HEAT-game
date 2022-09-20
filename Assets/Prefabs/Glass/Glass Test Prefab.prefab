@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8164383210108361
 Transform:
   m_ObjectHideFlags: 0
@@ -443,8 +443,8 @@ ParticleSystem:
     startRotationX:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0
-      minScalar: 0
+      scalar: 1.5707963
+      minScalar: 1.5707963
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4799,9 +4799,9 @@ ParticleSystemRenderer:
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
   m_VertexStreams: 00010304
-  m_Mesh: {fileID: -1126969952535889525, guid: 6192211491fb3d845a78a7e7d0c7ca56, type: 3}
-  m_Mesh1: {fileID: 0}
-  m_Mesh2: {fileID: 0}
+  m_Mesh: {fileID: -1126969952535889525, guid: 8b711bbbe505d29439378993d357df96, type: 3}
+  m_Mesh1: {fileID: 5249321218542336326, guid: b9ee0e5d5ff01de48b55e6e5fa98d93e, type: 3}
+  m_Mesh2: {fileID: 6964508218607064829, guid: c3e312ddb77dc304686def29a935f18c, type: 3}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
 --- !u!1 &8164384339991688
