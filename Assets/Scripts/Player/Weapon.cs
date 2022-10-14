@@ -11,19 +11,21 @@ public class Weapon : MonoBehaviour
     [Header("Raycast")]
     [SerializeField] float weaponRange; // Range setting for weapon
     
-    Camera mainCam;
+    GameObject mainCam;
+    public GameObject shatter;
+
     public HeatLevel heatLevel; // Reference to the script
     public int ammo;
     public Text ammoDisplay;
     private bool isFiring;
-    private GameObject camera;
+    
     void Awake()
     {
         // Grab player's camera proxy and make it a variable
         if (mainCam == null)
-            mainCam = Camera.main;
-        //get camera gameobject reference
-        camera = mainCam.gameObject;
+            mainCam = Camera.main.gameObject;
+
+        // Get 
     }
     void Update()
     {
@@ -43,7 +45,7 @@ public class Weapon : MonoBehaviour
     private void HandleRaycast()
     {
         RaycastHit hit;
-        Ray shootingRay = new Ray(mainCam.transform.position, camera.transform.forward);
+        Ray shootingRay = new Ray(mainCam.transform.position, mainCam.transform.forward);
 
         if (Physics.Raycast(shootingRay, out hit, weaponRange))
         {
@@ -53,7 +55,12 @@ public class Weapon : MonoBehaviour
                 Destroy(hit.transform.gameObject); // Destroy the instance
                 heatLevel.HeatLevelUp(); // Call the relevant method from the script
                 Debug.Log("Enemy hit!");
-                // TODO: Ammo display and subtract when fired
+            }
+
+            else if (hit.transform.tag.Equals("Glass"))
+            {
+                shatter.GetComponent<Shatter>().ShatterGlass();// Destroy the glass
+                Debug.Log("Glass hit!");
             }
 
             else
