@@ -12,7 +12,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] float weaponRange; // Range setting for weapon
     
     GameObject mainCam;
-    public GameObject shatter;
+    //public GameObject shatter;
 
     public HeatLevel heatLevel; // Reference to the script
     public int ammo;
@@ -59,7 +59,7 @@ public class Weapon : MonoBehaviour
 
             else if (hit.transform.tag.Equals("Glass"))
             {
-                shatter.GetComponent<Shatter>().ShatterGlass();// Destroy the glass
+                hit.transform.parent.GetComponent<Shatter>().ShatterGlass();// Destroy the glass
                 Debug.Log("Glass hit!");
             }
 
