@@ -14,7 +14,9 @@ public class Weapon : MonoBehaviour
     GameObject mainCam;
     //public GameObject shatter;
 
+    
     public HeatLevel heatLevel; // Reference to the script
+    NavMeshUpdate navMeshUpdate;
     public int ammo;
     public Text ammoDisplay;
     private bool isFiring;
@@ -24,8 +26,8 @@ public class Weapon : MonoBehaviour
         // Grab player's camera proxy and make it a variable
         if (mainCam == null)
             mainCam = Camera.main.gameObject;
-
-        // Get 
+        if (navMeshUpdate == null)
+            navMeshUpdate = gameObject.AddComponent<NavMeshUpdate>();
     }
     void Update()
     {
@@ -60,6 +62,9 @@ public class Weapon : MonoBehaviour
             else if (hit.transform.tag.Equals("Glass"))
             {
                 hit.transform.parent.GetComponent<Shatter>().ShatterGlass();// Destroy the glass
+                /* Need to create conditional so that the NavMesh
+                 * is rebaked after certain glass objects are shattered - enemies can no long cross */
+                // navMeshUpdate.RebakeNavMesh();
                 Debug.Log("Glass hit!");
             }
 
@@ -69,4 +74,6 @@ public class Weapon : MonoBehaviour
             }
         }
     }
+
+
 }
