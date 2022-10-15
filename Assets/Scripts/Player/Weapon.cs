@@ -51,7 +51,7 @@ public class Weapon : MonoBehaviour
 
         if (Physics.Raycast(shootingRay, out hit, weaponRange))
         {
-            //Debug.DrawRay(mainCam.transform.position, camera.transform.forward * weaponRange, Color.green);
+            Debug.DrawRay(mainCam.transform.position, mainCam.transform.forward * weaponRange, Color.green);
             if (hit.transform.tag.Equals("Enemy"))
             {
                 Destroy(hit.transform.gameObject); // Destroy the instance

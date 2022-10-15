@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Glass
+  - Navmesh
   layers:
   - Default
   - TransparentFX
@@ -14,7 +15,7 @@ TagManager:
   - Water
   - UI
   - Glass
-  - 
+  - Terrain
   - 
   - 
   - 
