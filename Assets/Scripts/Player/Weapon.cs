@@ -3,6 +3,7 @@
  * Created: 30 August 2022
  */
 
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,7 +19,7 @@ public class Weapon : MonoBehaviour
     public HeatLevel heatLevel; // Reference to the script
     public int ammo;
     public Text ammoDisplay;
-    private bool isFiring;
+    private bool isReloading = false;
     
     void Awake()
     {
@@ -29,17 +30,28 @@ public class Weapon : MonoBehaviour
     }
     void Update()
     {
-        ammoDisplay.text = ammo.ToString();
+        if(!isReloading)
+        {
+            ammoDisplay.text = ammo.ToString();
+        }
+        else
+        {
+            ammoDisplay.text = "Reloading";
+        }
+
         
         // Check if the left mouse button is pressed, then make the raycast
-        if (Input.GetMouseButtonDown(0) && !isFiring && ammo > 0)
-            {
-                isFiring = true;
+        if (Input.GetMouseButtonDown(0) && ammo > 0)
+        {
                 HandleRaycast();
                 ammo--;
-                isFiring = false;
                 //navMeshUpdate.MeshUpdate();
-            }
+        }
+        //if out of ammo and not currently reloading
+        else if (Input.GetMouseButtonDown(0) && !isReloading && ammo == 0)
+        {
+            StartCoroutine(Reload());
+        }
 
     }
 
@@ -50,7 +62,7 @@ public class Weapon : MonoBehaviour
 
         if (Physics.Raycast(shootingRay, out hit, weaponRange))
         {
-            //Debug.DrawRay(mainCam.transform.position, camera.transform.forward * weaponRange, Color.green);
+            Debug.DrawRay(mainCam.transform.position, mainCam.transform.forward * weaponRange, Color.green);
             if (hit.transform.tag.Equals("Enemy"))
             {
                 Destroy(hit.transform.gameObject); // Destroy the instance
@@ -71,5 +83,11 @@ public class Weapon : MonoBehaviour
         }
     }
 
-
+    private IEnumerator Reload()
+    {
+        isReloading = true;
+        yield return new WaitForSeconds(3f);
+        ammo = 10;
+        isReloading = false;
+    }
 }

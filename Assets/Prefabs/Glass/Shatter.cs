@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+//
 using UnityEngine;
 
 public class Shatter : MonoBehaviour
@@ -10,6 +9,7 @@ public class Shatter : MonoBehaviour
     [SerializeField] private GameObject particles;
     private NavMeshUpdate _navMeshUpdate;
     private bool trigger = false;
+    [SerializeField] private GameObject obstacle;
     //NavMeshUpdate navMeshUpdate;
     void Start()
     {
@@ -56,19 +56,22 @@ public class Shatter : MonoBehaviour
             * endif
             */
 
-            
 
-            StartCoroutine(End());
+
+            //StartCoroutine(End());
+            if (obstacle != null)
+            {
+                obstacle.SetActive(true);
+            }
         }
     }
 
 
-    IEnumerator End()
-    {
-        yield return new WaitForSeconds(15f);
-        Destroy(gameObject);
-
-    }
+    //IEnumerator End()
+    //{
+    //    yield return new WaitForSeconds(15f);
+    //    Destroy(gameObject);
+    //}
 
 
     //IEnumerator Test()
