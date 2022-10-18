@@ -1,19 +1,33 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class NavMeshUpdate : MonoBehaviour
 {
-    private NavMeshSurface navMesh;
+    public NavMeshSurface[] surfaces;
 
-    private void Awake()
+    private void Start()
     {
-        navMesh = GetComponent<NavMeshSurface>();
-        if (navMesh == null)
-            //aIAgent = gameObject.AddComponent(typeof(AIAgent)) as AIAgent;
-            navMesh = gameObject.AddComponent<NavMeshSurface>();
+        surfaces = GetComponentsInChildren<NavMeshSurface>();
     }
-    public void RebakeNavMesh()
+    public void MeshUpdate()
     {
-        navMesh.BuildNavMesh();
+        for (int i = 0; i < surfaces.Length; i++)
+        {
+            surfaces[i].BuildNavMesh(surfaces[i].navMeshData);
+            Debug.Log("NavMesh updated!");
+        }
+
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.P))
+        {
+            MeshUpdate();
+            Debug.Log("NavMesh updated");
+        }
+
     }
 }

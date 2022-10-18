@@ -156,7 +156,7 @@ namespace UnityEngine.AI
             return buildSettings;
         }
 
-        public void BuildNavMesh()
+        public void BuildNavMesh(NavMeshData navMeshData)
         {
             var sources = CollectSources();
 

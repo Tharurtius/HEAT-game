@@ -4948,4 +4948,5 @@ MonoBehaviour:
   glass: {fileID: 2100000, guid: 6fd366980f8fd1f4d8ec3fefcf9bea70, type: 2}
   amount: 0
   mesh: {fileID: 0}
+  mesh0: {fileID: 0}
   particles: {fileID: 8164383210108366}

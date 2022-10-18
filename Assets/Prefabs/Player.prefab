@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 074a8ebb437fe584f9a8864b49aecbd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterController: {fileID: 0}
+  _characterController: {fileID: 8802312993139630169}
   _rigidbody: {fileID: 0}
   yVelocity: 0
   jumpSpeed: 0.05
