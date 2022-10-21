@@ -30,7 +30,7 @@ public class Weapon : MonoBehaviour
     }
     void Update()
     {
-        if(!isReloading)
+        if (!isReloading)
         {
             ammoDisplay.text = ammo.ToString();
         }
@@ -39,20 +39,17 @@ public class Weapon : MonoBehaviour
             ammoDisplay.text = "Reloading";
         }
 
-        
         // Check if the left mouse button is pressed, then make the raycast
         if (Input.GetMouseButtonDown(0) && ammo > 0)
         {
-                HandleRaycast();
-                ammo--;
-                //navMeshUpdate.MeshUpdate();
+            HandleRaycast();
+            ammo--;
         }
         //if out of ammo and not currently reloading
         else if (Input.GetMouseButtonDown(0) && !isReloading && ammo == 0)
         {
             StartCoroutine(Reload());
         }
-
     }
 
     private void HandleRaycast()
