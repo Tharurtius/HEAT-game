@@ -11,6 +11,10 @@ public class Seek : SteeringBehaviour
     public Transform target;
     public float stoppingDistance = 0f;
 
+    private void Start()
+    {
+        target = GameManager.donut;
+    }
 
     public override Vector3 GetForce()
     {

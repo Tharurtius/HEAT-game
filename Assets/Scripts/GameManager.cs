@@ -6,7 +6,12 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private float gravity = 5;
     public static float gravityAcceleration;
- 
+    public static Transform donut;
+
+    private void Awake()
+    {
+        donut = GameObject.Find("Donut Waypoint").transform;
+    }
     // Start is called before the first frame update
     void Start()
     {
